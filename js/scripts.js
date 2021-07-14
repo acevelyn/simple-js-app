@@ -23,7 +23,7 @@ pokemonRespository.add({name: 'Mewtwo', height: 2, type: 'Psychic'});
 console.log(pokemonRespository.getAll());
 
 // listing each pokemon name and height on Page
-pokemonList.forEach(function(pokemon){
+pokemonRespository.getAll().forEach(function(pokemon){
   document.write('<p>'+pokemon.name+ ' (height: ' +pokemon.height+ ')');
 
 // if a pokemon's height is > or = to 1.0 print message beside it
