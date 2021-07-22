@@ -1,5 +1,5 @@
 // Lisiting each pokemon with a description of name, height and types for each
-let pokemonRespository = (function(){
+let pokemonRepository = (function(){
   let pokemonList = [
 {name: "Bulbasaur", height: 1.0, types: ['grass', 'poison']},
 {name: "Pikachu", height: 0.5, types:['field', 'fairy']  },
@@ -24,16 +24,16 @@ function addListItem(pokemon){
 }
 return {
   getAll: getAll,
-  add: add
+  add: add,
+  addListItem: addListItem
 };
 })();
 
-console.log(pokemonRespository.getAll());
-pokemonRespository.add({name: 'Mewtwo', height: 2, type: 'Psychic'});
-console.log(pokemonRespository.getAll());
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: 'Mewtwo', height: 2, type: 'Psychic'});
+console.log(pokemonRepository.getAll());
 
 // listing each pokemon name and height on Page
-pokemonRespository.getAll().forEach(function(pokemon){
-  pokemonRespository.addListItem(pokemon);
-  }
-});
+pokemonRepository.getAll().forEach(function(pokemon){
+  pokemonRepository.addListItem(pokemon);
+})
