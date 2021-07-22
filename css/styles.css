@@ -3,3 +3,8 @@ color: white;
 background-color: black;
 padding: 10px;
 }
+.button-class {
+  background-color: #f4f4f4;
+  color: black;
+  display: inline-block;
+}
