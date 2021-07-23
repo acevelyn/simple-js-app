@@ -12,6 +12,10 @@ function getAll(){
 function add(item){
   pokemonList.push(item);
 }
+function showDetails(pokemon){
+console.log(pokemon.name)
+}
+
 function addListItem(pokemon){
   let ulList = document.querySelector('.pokemon-list');
   let listItem = document.createElement('li');
@@ -19,6 +23,9 @@ function addListItem(pokemon){
   button.innerText = pokemon.name;
 
   button.classList.add('button-class');
+  button.addEventListener("click", function(event){
+    showDetails(pokemon);
+  })
   listItem.appendChild(button);
   ulList.appendChild(listItem);
 }
@@ -28,10 +35,6 @@ return {
   addListItem: addListItem
 };
 })();
-
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({name: 'Mewtwo', height: 2, type: 'Psychic'});
-console.log(pokemonRepository.getAll());
 
 // listing each pokemon name and height on Page
 pokemonRepository.getAll().forEach(function(pokemon){
