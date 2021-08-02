@@ -62,12 +62,72 @@ function loadDetails(item) {
       console.error(e);
     });
   }
+
+  // NEWWW ************** //
+
+function showModal(pokemon) {
+  loadDetails(pokemon).then(function () {
+
+    // ***** NEWWW ******* //
+ let modalContainer = document.querySelector('#modal-container');
+
+  // Clear all existing modal content
+  modalContainer.innerHTML = '';
+
+  let modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  // Add the new modal content
+  let closeButtonElement = document.createElement('button');
+  closeButtonElement.classList.add('modal-close');
+  closeButtonElement.innerText = 'Close';
+  closeButtonElement.addEventListener("click",hideModal);
+
+  let titleElement = document.createElement('h1');
+  titleElement.innerText = pokemon.name;
+
+  let contentElement = document.createElement('p');
+ contentElement.innerText ="Height: "+pokemon.height+' '+pokemon.imageUrl;
+
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(titleElement);
+  modal.appendChild(contentElement);
+  modalContainer.appendChild(modal);
+
+  modalContainer.classList.add('is-visible');
+});
+}
+
+// END OF NEWW ****** //
+
+
+
   // Display details for the Pokemons in API
   function showDetails(pokemon) {
   loadDetails(pokemon).then(function () {
-    console.log(pokemon);
+    showModal(pokemon);
   });
 }
+function hideModal() {
+  let modalContainer = document.querySelector('#modal-container');
+  modalContainer.classList.remove('is-visible');
+}
+window.addEventListener('keydown', (e) => {
+  let modalContainer = document.querySelector('#modal-container');
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal();
+  }
+});
+let modalContainer = document.querySelector("#modal-container");
+modalContainer.addEventListener('click', (e) => {
+  // Since this is also triggered when clicking INSIDE the modal
+  // We only want to close if the user clicks directly on the overlay
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal();
+  }
+});
+
 
 // returns all functions so they can be accessed
 return {
@@ -76,7 +136,9 @@ return {
   addListItem: addListItem,
   loadList: loadList,
   loadDetails: loadDetails,
-  showDetails: showDetails
+  showModal: showModal,
+  showDetails: showDetails,
+  hideModal: hideModal
 };
 })();
 
