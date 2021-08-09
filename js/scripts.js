@@ -86,7 +86,7 @@ function loadDetails(item) {
   nameElement.innerText = pokemon.name;
 
   let heightElement = document.createElement('p');
-  heightElement.innerText = pokemon.height;
+  heightElement.innerText = 'Height: '+pokemon.height;
 
 
 // Create an <img> element
