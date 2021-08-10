@@ -1,4 +1,4 @@
-#Pokemon App /**Pokedex**
+# Pokemon App / **Pokedex**
 
 Creating an app that displays each Pokemon's description. The description data was pulled from an external API (https://pokeapi.co/api/c2/pokemon)
 
