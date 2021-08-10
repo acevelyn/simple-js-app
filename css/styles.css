@@ -1,7 +1,7 @@
 body {
-color: blue;
-background-color: black;
-padding: 10px;
+  color: blue;
+  background-color: black;
+  padding: 10px;
 }
 
 .btn-primary {
@@ -10,7 +10,7 @@ padding: 10px;
   margin: 10px 5px;
   display: inline-block;
   padding: 10px 10px;
-  width: 50%
+  width: 50%;
 }
 .pokemon-list {
   list-style-type: none;
