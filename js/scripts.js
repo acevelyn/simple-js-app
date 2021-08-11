@@ -24,7 +24,6 @@ let pokemonRepository = (function() {
     button.classList.add('btn', 'btn-primary');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#exampleModal');
-    // button.setAttribute('type',"button");
 
     listItem.appendChild(button);
 
@@ -37,11 +36,12 @@ let pokemonRepository = (function() {
 
   // fetching the list from the Pokemon API to show name and url
   function loadList() {
-    return fetch(apiUrl)
+    return fetch(apiUrl) // getting the data from the link assigned to apiURL
       .then(function(response) {
         return response.json(); //converting API info to JSON
       })
       .then(function(json) {
+        // and with that JSON data
         json.results.forEach(function(item) {
           let pokemon = {
             name: item.name,
@@ -51,6 +51,7 @@ let pokemonRepository = (function() {
         });
       })
       .catch(function(e) {
+        // catch any errors and display on console
         console.error(e);
       });
   }
@@ -66,14 +67,14 @@ let pokemonRepository = (function() {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        item.weight = details.weight;
       })
       .catch(function(e) {
         console.error(e);
       });
   }
 
-  // NEWW FUNCTION ************** //
-
+  // assigning and setting the content that will be in the modal
   function showModal(pokemon) {
     let modalBody = document.querySelector('.modal-body');
     let modalTitle = document.querySelector('.modal-title');
@@ -82,14 +83,15 @@ let pokemonRepository = (function() {
     // Clear existing content
     modalTitle.innerText = '';
     modalBody.innerHTML = '';
-    //modalBody.empty();
-    //modalTitle.empty();
 
     let nameElement = document.createElement('h1');
     nameElement.innerText = pokemon.name;
 
     let heightElement = document.createElement('p');
-    heightElement.innerText = 'Height: ' + pokemon.height;
+    heightElement.innerText = pokemon.name + ' Height: ' + pokemon.height;
+
+    let weightElement = document.createElement('p');
+    weightElement.innerText = pokemon.name + ' Weight: ' + pokemon.weight;
 
     // Create an <img> element
     let myImage = document.createElement('img');
@@ -98,6 +100,7 @@ let pokemonRepository = (function() {
     modalTitle.appendChild(nameElement);
     modalBody.appendChild(myImage);
     modalBody.appendChild(heightElement);
+    modalBody.appendChild(weightElement);
   } // End of showModal
 
   // Display details for the Pokemons in API
