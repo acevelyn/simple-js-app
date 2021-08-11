@@ -17,7 +17,7 @@
   <body>
     <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Pokedex</a>
+      <a class="navbar-brand justify-content-center" href="#">Pokedex</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -29,35 +29,19 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
-        </ul>
-      </div>
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
     </nav>
+    <img
+      class="page-logo"
+      src="img/pokeapi.jpeg"
+      alt="PokeApi Image"
+      width="50%"
+      height="50%"
+    />
 
-    <h1>Pokedex</h1>
-
-    <ul class="pokemon-list list-group"></ul>
+    <div class="container">
+      <ul class="pokemon-list list-group"></ul>
+    </div>
 
     <!-- Button trigger modal -->
     <button
@@ -65,9 +49,7 @@
       class="btn btn-primary"
       data-toggle="modal"
       data-target="#exampleModal"
-    >
-      Launch demo modal
-    </button>
+    ></button>
 
     <!-- Modal -->
     <div
@@ -102,7 +84,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary save-change">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
