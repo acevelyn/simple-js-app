@@ -66,8 +66,8 @@ let pokemonRepository = (function() {
         // Now we add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
-        item.types = details.types;
         item.weight = details.weight;
+        item.types = details.types;
       })
       .catch(function(e) {
         console.error(e);
@@ -78,21 +78,29 @@ let pokemonRepository = (function() {
   function showModal(pokemon) {
     let modalBody = document.querySelector('.modal-body');
     let modalTitle = document.querySelector('.modal-title');
-    let modalHeader = document.querySelector('.modal-header');
 
     // Clear existing content
     modalTitle.innerText = '';
     modalBody.innerHTML = '';
 
-    let nameElement = document.createElement('h1');
+    const nameElement = document.createElement('h1');
     nameElement.innerText = pokemon.name;
 
-    let heightElement = document.createElement('p');
+    const heightElement = document.createElement('p');
     heightElement.innerText = pokemon.name + ' Height: ' + pokemon.height;
 
-    let weightElement = document.createElement('p');
+    const weightElement = document.createElement('p');
     weightElement.innerText = pokemon.name + ' Weight: ' + pokemon.weight;
 
+    const typesElement = document.createElement('p');
+    let s = 'Type(s): ';
+    for (let i = 0; i < pokemon.types.length; i++) {
+      s =
+        s +
+        pokemon.types[i].type.name +
+        (i != pokemon.types.length - 1 ? ', ' : '');
+      typesElement.innerText = s;
+    }
     // Create an <img> element
     let myImage = document.createElement('img');
     myImage.src = pokemon.imageUrl;
@@ -101,6 +109,7 @@ let pokemonRepository = (function() {
     modalBody.appendChild(myImage);
     modalBody.appendChild(heightElement);
     modalBody.appendChild(weightElement);
+    modalBody.appendChild(typesElement);
   } // End of showModal
 
   // Display details for the Pokemons in API
