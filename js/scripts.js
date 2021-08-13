@@ -99,8 +99,8 @@ let pokemonRepository = (function() {
         s +
         pokemon.types[i].type.name +
         (i != pokemon.types.length - 1 ? ', ' : '');
-      typesElement.innerText = s;
     }
+    typesElement.innerText = s;
     // Create an <img> element
     let myImage = document.createElement('img');
     myImage.src = pokemon.imageUrl;
